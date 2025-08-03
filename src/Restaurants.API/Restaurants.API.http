@@ -1,0 +1,111 @@
+@Restaurants.API_HostAddress = https://localhost:7230
+@token = CfDJ8EmOaZNJlWRLoO5rQRPmjQAuZu7_Ng4xXdaRxJCNqtThYVp7wc61fsN01BjoxS5es8SzxkV0o66C7rPTPM12Y8mOPu4OOm8m_K7KGtsVSW3ePEEVH3o1qLCQ0Qp5_-19UAumXcbbjSVBg_d1WW5hPZ8mVHUnZYYO3E5BVP6UzAgk7VuFwBrYgsG43gtLz5RwSbF_v4x8JC76RqRboiSVNVdHVsxlIiM3vvVDPmYnqk60UOJpcRwbKmmmw6EwBSoSj1ltbtuxyYD1gB9BFLRx0sYZC5jJGZuAcMqfewR8Jgt132WUWhhLN0LtTjuGZFIsUehc7Gmw-zh2Mc2u2AkoOL-VTe6iKcrfzuuATKeompZ1ez0bAxBER55X65r2a6MNzM6bMzmCaqpMY5k7fg7f7smiAIpqSjVsVI5UI7NzhfW6tanFS6iYStwF7ZoBBldVVYBGxOAQRqu30RiqhBkmsYQGdGYzvAg0BEnfzL8Zu1i_Moq2Fosv6JpgdD37Qa-cGtSH9LKWUmyeobzkXMuTmNFSOcxJY1aRJLy4j9Iu2jYMOf9rbQjc5pIcV4lI6wpQXASLkGkkz0XWLTPsG1beRCUwquriD4gHL9WJYOUod3bh0qkcx2cQKD7OR27S6U55Yoi6DlMSV5w7egwrsoM1YUWH1Z5DqBZX-sfE-a5oPHcGBrWxiBoYecRtalCuhWD1go5rAsMohB0DyUWsmqR8mBAVsCe2Mk9WvZMLj3uDTl5bXqusID3guNzzJbl63PWKhWC4A6wVsCpHwD2xmG7l2ZF_fKcaQYt2mKuxXbh6Jmq9e9QUbCBeptofCSGMNAGAlUPgE8cgQBlwDR6Kg3DoeLtkS_XQL-S7SAe33LhiRUKDzZFXD61SUBuNdjDAysyZYA
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?searchPhrase=&pageSize=5&pageNumber=1&sortBy=Name&sortDirection=Descending
+Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/12
+Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Authorization: Bearer {{token}}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/343/dishes
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes/4
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/7
+Authorization: Bearer {{token}}
+
+###
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "Name": "Owner2 Restaurant2",
+  "Description": "A cozy restaurant serving a various dishes",
+  "Category": "Indian",
+  "HasDelivery": true,
+  "ContactEmail": "info@tastybites.com",
+  "ContactNumber": "555-1234",
+  "City": "New York",
+  "Street": "123 Main Street",
+  "PostalCode": "10-001"
+}
+
+###
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/7
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Updated name",
+  "Description": "This is a sample restaurant description",
+  "HasDelivery": false
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat sauce",
+  "Price": 12.99,
+  "KiloCalories": 750
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "owner2@test.com",
+  "password": "Password1!"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "owner@test.com",
+  "password": "Password1!"
+}
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Nationality": "French",
+  "DateOfBirth": "2010-01-01"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "UserEmail": "owner2@test.com",
+  "RoleName": "Owner"
+}
